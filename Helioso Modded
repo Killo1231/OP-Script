@@ -1144,7 +1144,7 @@ getRoot = function(char)
 	return rootPart;
 end;
 Players = game:GetService("Players");
-SSection:NewButton("Name Esp", "", function()
+SSection:NewButton("Name ESP", "", function()
 	local esp_settings = {textsize=20};
 	local gui = Instance.new("BillboardGui");
 	local esp = Instance.new("TextLabel", gui);
@@ -1153,15 +1153,15 @@ SSection:NewButton("Name Esp", "", function()
 	gui.AlwaysOnTop = true;
 	gui.LightInfluence = 0;
 	gui.Size = UDim2.new(1.75, 0, 1.75, 0);
-	esp.BackgroundColor3 = Color3.fromRGB(0, 255, 255);
+	esp.BackgroundColor3 = Color3.fromRGB(255, 255, 255);
 	esp.Text = "";
 	esp.Size = UDim2.new(0.0001, 0.00001, 0.0001, 0.00001);
 	esp.BorderSizePixel = 4;
-	esp.BorderColor3 = Color3.new(0, 255, 255);
+	esp.BorderColor3 = Color3.new(255, 255, 255);
 	esp.BorderSizePixel = 0;
 	esp.Font = "SourceSansSemibold";
 	esp.TextSize = esp_settings.textsize;
-	esp.TextColor3 = Color3.fromRGB(0, 255, 255);
+	esp.TextColor3 = Color3.fromRGB(255, 255, 255);
 	getgenv().esp = true;
 	game:GetService("RunService").RenderStepped:Connect(function()
 		for i, v in pairs(game:GetService("Players"):GetPlayers()) do
