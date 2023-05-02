@@ -1555,7 +1555,7 @@ TargetSection:NewToggle("Spectate Player", "", function(state)
 		end
 	end);
 end);
-TargetSection:NewToggle("Kill Player", "", function(state)
+TargetSection:NewToggle("Kill Player (Normal)", "", function(state)
 	if state then
 		getgenv().killplr = true;
 		local varX = player.Character.HumanoidRootPart.Position['X'];
@@ -1590,11 +1590,75 @@ TargetSection:NewToggle("Kill Player", "", function(state)
 					end);
 				end);
 				spawn(function()
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0., 0.1, 1);
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0., 0.1, 1);
 					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0, 0.1, 1);
 					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0, 0.1, 1);
 					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0, 0.1, 1);
-					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0, 0.1, 1);
-					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0, 0.1, 1);
+				end);
+				spawn(function()
+					local LookVector = game.Workspace.Camera.CFrame.LookVector;
+					game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(LookVector, true);
+					game:GetService("ReplicatedStorage").Events.ToggleTelekinesis:InvokeServer(LookVector, false);
+				end);
+				spawn(function()
+					if (killplr == false) then
+						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(varX, varY, varZ);
+					end
+				end);
+			end
+		end);
+	else
+		spawn(function()
+			getgenv().breakv = false;
+			wait(0.2);
+			getgenv().killplr = false;
+			wait(0.1);
+			getgenv().killplr = true;
+			breakvelocity();
+		end);
+	end
+end);
+TargetSection:NewToggle("Kill Player (Heavy)", "", function(state)
+	if state then
+		getgenv().killplr = true;
+		local varX = player.Character.HumanoidRootPart.Position['X'];
+		local varY = player.Character.HumanoidRootPart.Position['Y'];
+		local varZ = player.Character.HumanoidRootPart.Position['Z'];
+		wait();
+		local p1 = game.Players.LocalPlayer.Character.HumanoidRootPart;
+		local pos = p1.CFrame;
+		getgenv().breakv = true;
+		spawn(function()
+			while breakv do
+				breakvelocity();
+				game:GetService("ReplicatedStorage").Events.Transform:FireServer("metalSkin", true);
+				wait(1);
+			end
+		end);
+		spawn(function()
+			while killplr do
+				task.wait();
+				task.wait();
+				task.wait();
+				task.wait();
+				task.wait();
+				task.wait();
+				spawn(function()
+					pcall(function()
+						for i, v in pairs(game.Workspace:GetChildren()) do
+							if ((v.Name == _G.tplayer) and v:FindFirstChild("Humanoid") and (v.Humanoid.Health > 0)) then
+								game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 1);
+							end
+						end
+					end);
+				end);
+				spawn(function()
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0.4, 0.1, 1);
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0.4, 0.1, 1);
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0.4, 0.1, 1);
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0.4, 0.1, 1);
+					game:GetService("ReplicatedStorage").Events.Punch:FireServer(0.4, 0.1, 1);
 				end);
 				spawn(function()
 					local LookVector = game.Workspace.Camera.CFrame.LookVector;
