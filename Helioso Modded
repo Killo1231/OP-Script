@@ -1324,6 +1324,13 @@ SSection:NewToggle("Telekinesis Space Fling", "", function(state)
 		end);
 	end
 end);
+PlrSection:NewToggle("Disable Gravity", "", function(state)
+    if state then
+        worksapce.Gravity = 0
+    else
+        worksapce.Gravity = 196.2
+    end
+end);
 SSection:NewToggle("Safe Teleport", "", function(state)
 	if state then
 		local player1 = game.Players.LocalPlayer.Character.Humanoid.Health;
