@@ -10,7 +10,7 @@
                                                                                                          
                                                                                                      
                                                      
-Made By Killo                                                  
+Made By Eon#5323                                                 
 Open Source   
 I love you ??
 Age-Of-Heros
@@ -1324,7 +1324,7 @@ SSection:NewToggle("Telekinesis Space Fling", "", function(state)
 		end);
 	end
 end);
-PlrSection:NewToggle("Disable Gravity", "", function(state)
+SSection:NewToggle("Disable Gravity", "", function(state)
     if state then
         worksapce.Gravity = 0
     else
